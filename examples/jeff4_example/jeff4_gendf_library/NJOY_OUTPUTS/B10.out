@@ -1,0 +1,534 @@
+
+ +++,    +++`         '++'    `#@@@@;   ,@@@      +@@@    '@@@@+        .;@
+ @@@@    @@@:         @@@@   @@@@@@@@@   @@@;     @@@#  .@@@@@@@@+   @@@@@@
+ @@@@    @@@:         @@@@   @@@@@@@@@@  @@@@    ;@@@   @@@@@@@@@@   @@@@@@
+ @@@@#   @@@:         @@@@  '@@@@@@@@@@  ,@@@    @@@@   @@@@@@@@@@`  @@@@@@
+ @@@@@   @@@:         @@@@  +@@@   .@@@   @@@@   @@@.   @@@,   @@@.  +:@@@@
+ @@@@@   @@@:         @@@@  +@@@   `@@@   #@@@  @@@@    @@@`   @@@.    @@@@
+ @@@@@@  @@@:         @@@@  +@@@   `@@@    @@@, @@@+    @@@`   @@@.    @@@@
+ @@@@@@  @@@:         @@@@  +@@@   `@@@    @@@@,@@@     ...    @@@.    @@@@
+ @@@@@@. @@@:         @@@@  +@@@   `@@@    `@@@@@@@            @@@.    @@@@
+ @@@@@@@ @@@:         @@@@  +@@@   `@@@     @@@@@@`          :@@@@.    @@@@
+ @@@@@@@ @@@:         @@@@  +@@@   `@@@     '@@@@@         .@@@@@@.    @@@@
+ @@@@+@@:@@@:         @@@@  +@@@   `@@@      @@@@;       `@@@@@@@;     @@@@
+ @@@@ @@@@@@:         @@@@  +@@@   `@@@      @@@@       @@@@@@@+       @@@@
+ @@@@ @@@@@@:         @@@@  +@@@   `@@@      #@@@       @@@@@#         @@@@
+ @@@@ ;@@@@@:  ```    @@@@  +@@@   `@@@      #@@@       @@@@           @@@@
+ @@@@  @@@@@:  @@@+   @@@@  +@@@   `@@@      #@@@       @@@`           @@@@
+ @@@@  @@@@@:  @@@+   @@@@  +@@@   `@@@      #@@@       @@@`   '''     @@@@
+ @@@@  ,@@@@:  @@@@   @@@@  +@@@   .@@@      #@@@       @@@`   @@@.    @@@@
+ @@@@   @@@@:  @@@@@@@@@@@  '@@@@@@@@@@      #@@@       @@@@@@@@@@.    @@@@
+ @@@@   @@@@:  @@@@@@@@@@:   @@@@@@@@@@      #@@@       @@@@@@@@@@.    @@@@
+ @@@@   `@@@:   @@@@@@@@@    #@@@@@@@@       #@@@       @@@@@@@@@@.    @@@@
+ @@@+    @@@.    :@@@@#,       ;++++,        .+++       ++++++++++     ;+++
+
+===========================================================================
+
+
+ reconr...reconstruct pointwise cross sections in pendf format            0.0s
+
+ unit for endf tape ...................         20
+ unit for pendf tape ..................         21
+
+ label for pendf tape
+ ------------------------------------------------------------------
+ B10 JEFF4.0                                                         
+
+ tape label
+ ------------------------------------------------------------------
+ JEFF-4.0 Incident Neutron File                                      
+
+ material to be processed .............        525
+ reconstruction tolerance .............      0.010
+ reconstruction temperature ...........       0.00k
+ resonance-integral-check tolerance ...      0.100
+ max resonance-integral error .........  5.000E-07
+
+ descriptive cards for pendf tape
+ ------------------------------------------------------------------
+                                                                     
+ 
+
+ processing mat  525 in endf-6 format
+ ------------------------------------------------------------------
+   5-B - 10 LANL       EVAL-FEB17 G.M.Hale                           
+
+
+ mat has no resonance parameters
+
+ changed threshold from 7.907138E+05 to 7.907139E+05 for mt 51.
+
+ changed threshold from 1.915446E+06 to 1.915447E+06 for mt 52.
+
+ changed threshold from 2.371316E+06 to 2.371317E+06 for mt 53.
+
+ changed threshold from 3.948451E+06 to 3.948452E+06 for mt 54.
+
+ changed threshold from 5.254914E+06 to 5.254915E+06 for mt 55.
+
+ changed threshold from 5.625092E+06 to 5.625093E+06 for mt 56.
+
+ changed threshold from 5.684092E+06 to 5.684093E+06 for mt 57.
+
+ changed threshold from 5.701813E+06 to 5.701814E+06 for mt 58.
+
+ changed threshold from 6.515808E+06 to 6.515809E+06 for mt 59.
+
+ changed threshold from 6.631935E+06 to 6.631936E+06 for mt 60.
+
+ changed threshold from 6.744431E+06 to 6.744432E+06 for mt 61.
+
+ changed threshold from 7.705000E+06 to 7.705154E+06 for mt 63.
+
+ changed threshold from 9.356000E+06 to 9.356258E+06 for mt 66.
+
+ changed threshold from 1.045700E+07 to 1.045700E+07 for mt 68.
+
+ changed threshold from 1.100700E+07 to 1.100737E+07 for mt 69.
+
+ changed threshold from 1.210800E+07 to 1.210811E+07 for mt 71.
+
+ changed threshold from 1.265800E+07 to 1.265848E+07 for mt 72.
+
+ changed threshold from 1.375900E+07 to 1.375921E+07 for mt 74.
+
+ changed threshold from 1.541000E+07 to 1.541032E+07 for mt 77.
+
+ changed threshold from 1.651100E+07 to 1.651105E+07 for mt 79.
+
+ changed threshold from 1.706100E+07 to 1.706142E+07 for mt 80.
+
+ changed threshold from 1.816200E+07 to 1.816216E+07 for mt 82.
+
+ changed threshold from 1.981300E+07 to 1.981326E+07 for mt 85.
+
+ changed threshold from 4.800000E+06 to 4.800311E+06 for mt104.
+
+ changed threshold from 1.731100E+07 to 1.733660E+07 for mt106.
+
+ changed threshold from 3.458281E+06 to 3.458282E+06 for mt601.
+
+ changed threshold from 6.309584E+06 to 6.309585E+06 for mt602.
+
+ changed threshold from 6.311246E+06 to 6.311247E+06 for mt603.
+
+ changed threshold from 6.552747E+06 to 6.552748E+06 for mt604.
+
+ changed threshold from 6.645209E+06 to 6.645210E+06 for mt605.
+
+ number of user and resonance nodes           =       0
+ points in initial unionized grid             =    1322
+ points added by linearization                =       0                   0.1s
+ number of points in final unionized grid     =    1322
+                                                                          0.2s
+ *****************************************************************************
+
+ broadr...doppler broadening of endf data                                 0.2s
+
+ unit for input endf tape .............         20
+ unit for input pendf tape ............         21
+ unit for output pendf tape ...........         22
+ material to be processed .............        525
+ number of final temperatures .........          3
+ restart (0 no, 1 yes) ................          0
+ bootstrap (0 no, 1 yes) ..............          0
+ starting material temperature ........        0.0k
+ thinning tolerance ...................      0.010
+ max. energy ..........................  6.500E+06
+ errmax for thinning ..................  1.000E-01
+ errint for thinning ..................  5.000E-07
+ final temperatures ...................  3.000E+02
+                                         6.000E+02
+                                         9.000E+02
+
+ files are in endf-6 format
+
+ non-resonance nuclide, input pendf limit     =    2.00000E+07 eV.
+ - reset to    6.50000E+06 eV.
+
+ final maximum energy for broadening/thinning =    7.90706E+05 eV
+                                                                          0.2s
+
+ broadened mat 525 from  0.0000E+00 to  3.0000E+02 k
+         points in=   1322  points out=    879
+         mt   2 102 103 105 107 600 700 800 801
+                                                                          0.3s
+
+ broadened mat 525 from  0.0000E+00 to  6.0000E+02 k
+         points in=   1322  points out=    879
+         mt   2 102 103 105 107 600 700 800 801
+                                                                          0.5s
+
+ broadened mat 525 from  0.0000E+00 to  9.0000E+02 k
+         points in=   1322  points out=    879
+         mt   2 102 103 105 107 600 700 800 801
+                                                                          0.6s
+ *****************************************************************************
+
+ unresr...calculation of unresolved resonance cross sections              0.6s
+
+ unit for input endf tape .............         20
+ unit for input pendf tape ............         22
+ unit for output pendf tape ...........         23
+
+ temperatures .........................  3.000E+02
+                                         6.000E+02
+                                         9.000E+02
+ sigma zero values ....................  1.000E+00
+
+ print option (0 min., 1 max.) ........          0
+
+ mat =  525    temp =  3.000E+02                                          0.6s
+
+ ---message from unresr---mat  525 has no resonance parameters
+                          copy as is to nout
+
+                                                                          0.6s
+ *****************************************************************************
+
+ heatr...prompt kerma                                                     0.6s
+
+ input endf unit ......................         20
+ input pendf unit .....................         23
+ output pendf unit ....................         24
+ mat to be processed ..................        525
+ no. temperatures (0=all) .............          0
+ gamma heat (0 nonlocal, 1 local) .....          0
+ print option (0 min, 1 more, 2 chk) ..          0
+ damage displacement energy ...........    default
+
+ default damage energy = 25.0 ev
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 600
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 601
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 602
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 603
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 604
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 605
+                                                             temp 1       0.8s
+                                                             temp 1       1.4s
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 600
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 601
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 602
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 603
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 604
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 605
+                                                             temp 2       1.7s
+                                                             temp 2       2.3s
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 600
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 601
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 602
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 603
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 604
+
+ ---message from hinit---mf4 and 6 missing, isotropy assumed for mt 605
+                                                             temp 3       2.5s
+                                                             temp 3       3.1s
+
+                                                                          3.2s
+ *****************************************************************************
+
+ groupr...compute self-shielded group-averaged cross-sections             3.2s
+
+ unit for endf tape ...................         20
+ unit for pendf tape ..................         24
+ unit for input gout tape .............          0
+ unit for output gout tape ............         25
+ mat to be processed ..................        525
+ neutron group structure option .......          1
+ gamma group option ...................          0
+ weight function option ...............          8
+ legendre order .......................          8
+ print option (0 min, 1 max) ..........          1
+ smoothing option (0 off, 1 on) .......          1
+
+ run title
+ --------------------------------------
+      B10 JEFF4.0                                                       
+ 
+ temperatures (kelvin) ................   3.00E+02
+                                          6.00E+02
+                                          9.00E+02
+ sigma zeroes .........................   infinity
+
+ neutron group structure......read in
+     1   1.00000E-05  -  1.00000E+00
+     2   1.00000E+00  -  1.00000E+02
+     3   1.00000E+02  -  1.00000E+03
+     4   1.00000E+03  -  2.00000E+06
+
+ weight function...thermal--1/e--fast reactor--fission + fusion
+
+ using endf-6 format
+
+ processing mat    525
+ --------------------------------------
+                                                                      
+ 
+ group constants at t=3.000E+02 deg k                                     3.4s
+ for mf  3 and mt  1 total                                                       
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    1.70884+3
+  flx   2.92914-2
+     2    2.25208+2
+  flx   4.49638-2
+     3    2.83447+1
+  flx   1.28739+0
+     4    5.91886+0
+  flx   9.22891+1
+ 
+ group constants at t=3.000E+02 deg k                                     3.4s
+ for mf  3 and mt102 ngamma                                                      
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    1.75803-1
+     2    2.29910-2
+     3    2.72386-3
+     4    3.35235-4
+ 
+ group constants at t=3.000E+02 deg k                                     3.4s
+ for mf  6 and mt  2 elastic                                                     
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     1      1   2.11888+0  1.42299-1  4.30663-3  0.00000+0 -3.39021-6  0.00000+0  0.00000+0  0.00000+0  0.00000+0
+     2      1   7.75387-2 -2.22550-2 -2.06578-3 -6.44113-5  5.76992-7  8.31602-8 -3.32801-8  2.42271-7 -1.55280-6
+     2      2   2.00812+0  1.62325-1  6.30522-3  6.44113-5 -3.92144-6 -8.01580-8  3.85984-9  2.18106-9  9.34500-9
+     3      2   1.23945-2 -4.26511-3  8.31949-5 -2.14400-6 -1.55978-8  2.57913-9 -6.08978-9  5.17530-8 -3.29302-7
+     3      3   2.06198+0  1.43641-1  4.14113-3  2.62605-6 -3.30484-6 -1.98020-9 -1.5482-10  1.3159-10  1.24798-9
+     4      3   9.78916-3 -3.13375-3 -7.91189-5  1.00798-6  7.16386-8 -1.23744-9 -4.50786-9  3.64958-8 -2.31835-7
+     4      4   2.71958+0  2.29680-1  1.99860-2  1.87996-3  1.36767-4  6.49842-6  1.51763-7 -2.8333-11  1.14027-9
+ 
+ group constants at t=3.000E+02 deg k                                     3.4s
+ for mf  6 and mt 51 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      4   7.40839-4  1.04817-4 -5.31562-5 -1.38696-5 -1.60415-6 -1.06547-7 -3.56712-9  2.1480-10 -3.2907-10
+ 
+ group constants at t=3.000E+02 deg k                                     3.4s
+ for mf  6 and mt 52 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+ 
+
+ threshold is above highest energy bound for mt 53
+ 
+
+ threshold is above highest energy bound for mt 54
+ 
+
+ threshold is above highest energy bound for mt 55
+ 
+
+ threshold is above highest energy bound for mt 56
+ 
+
+ threshold is above highest energy bound for mt 57
+ 
+
+ threshold is above highest energy bound for mt 58
+ 
+
+ threshold is above highest energy bound for mt 59
+ 
+
+ threshold is above highest energy bound for mt 60
+ 
+
+ threshold is above highest energy bound for mt 61
+ 
+
+ threshold is above highest energy bound for mt 62
+ 
+
+ threshold is above highest energy bound for mt 63
+ 
+
+ threshold is above highest energy bound for mt 64
+ 
+
+ threshold is above highest energy bound for mt 65
+ 
+
+ threshold is above highest energy bound for mt 66
+ 
+
+ threshold is above highest energy bound for mt 67
+ 
+
+ threshold is above highest energy bound for mt 68
+ 
+
+ threshold is above highest energy bound for mt 69
+ 
+
+ threshold is above highest energy bound for mt 70
+ 
+
+ threshold is above highest energy bound for mt 71
+ 
+
+ threshold is above highest energy bound for mt 72
+ 
+
+ threshold is above highest energy bound for mt 73
+ 
+
+ threshold is above highest energy bound for mt 74
+ 
+
+ threshold is above highest energy bound for mt 75
+ 
+
+ threshold is above highest energy bound for mt 76
+ 
+
+ threshold is above highest energy bound for mt 77
+ 
+
+ threshold is above highest energy bound for mt 78
+ 
+
+ threshold is above highest energy bound for mt 79
+ 
+
+ threshold is above highest energy bound for mt 80
+ 
+
+ threshold is above highest energy bound for mt 81
+ 
+
+ threshold is above highest energy bound for mt 82
+ 
+
+ threshold is above highest energy bound for mt 83
+ 
+
+ threshold is above highest energy bound for mt 84
+ 
+
+ threshold is above highest energy bound for mt 85
+ 
+ group constants at t=3.000E+02 deg k                                     3.4s
+ for mf  3 and mt301 heat                                                        
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    3.99638+9
+     2    5.22456+8
+     3    6.15280+7
+     4    7.78949+6
+ 
+
+ processing mat    525
+ --------------------------------------
+                                                                      
+ 
+ group constants at t=6.000E+02 deg k                                     3.4s
+ for mf  3 and mt  1 total                                                       
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    1.70886+3
+  flx   2.92914-2
+     2    2.25212+2
+  flx   4.49638-2
+     3    2.83450+1
+  flx   1.28739+0
+     4    5.91887+0
+  flx   9.22891+1
+ 
+ group constants at t=6.000E+02 deg k                                     3.4s
+ for mf  3 and mt102 ngamma                                                      
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    1.75801-1
+     2    2.29914-2
+     3    2.72389-3
+     4    3.35235-4
+ 
+ group constants at t=6.000E+02 deg k                                     3.4s
+ for mf  3 and mt  2 elastic                                                     
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    2.14881+0
+     2    2.08619+0
+     3    2.07438+0
+     4    2.72937+0
+ 
+
+ processing mat    525
+ --------------------------------------
+                                                                      
+ 
+ group constants at t=9.000E+02 deg k                                     3.5s
+ for mf  3 and mt  1 total                                                       
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    1.70889+3
+  flx   2.92914-2
+     2    2.25215+2
+  flx   4.49638-2
+     3    2.83452+1
+  flx   1.28739+0
+     4    5.91888+0
+  flx   9.22891+1
+ 
+ group constants at t=9.000E+02 deg k                                     3.5s
+ for mf  3 and mt102 ngamma                                                      
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    1.75800-1
+     2    2.29916-2
+     3    2.72390-3
+     4    3.35236-4
+ 
+ group constants at t=9.000E+02 deg k                                     3.5s
+ for mf  3 and mt  2 elastic                                                     
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    2.17814+0
+     2    2.08673+0
+     3    2.07438+0
+     4    2.72937+0
+ 
+                                                                          3.5s
+ *****************************************************************************

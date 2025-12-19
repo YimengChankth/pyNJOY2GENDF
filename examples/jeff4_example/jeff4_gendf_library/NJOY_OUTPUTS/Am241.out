@@ -1,0 +1,944 @@
+
+ +++,    +++`         '++'    `#@@@@;   ,@@@      +@@@    '@@@@+        .;@
+ @@@@    @@@:         @@@@   @@@@@@@@@   @@@;     @@@#  .@@@@@@@@+   @@@@@@
+ @@@@    @@@:         @@@@   @@@@@@@@@@  @@@@    ;@@@   @@@@@@@@@@   @@@@@@
+ @@@@#   @@@:         @@@@  '@@@@@@@@@@  ,@@@    @@@@   @@@@@@@@@@`  @@@@@@
+ @@@@@   @@@:         @@@@  +@@@   .@@@   @@@@   @@@.   @@@,   @@@.  +:@@@@
+ @@@@@   @@@:         @@@@  +@@@   `@@@   #@@@  @@@@    @@@`   @@@.    @@@@
+ @@@@@@  @@@:         @@@@  +@@@   `@@@    @@@, @@@+    @@@`   @@@.    @@@@
+ @@@@@@  @@@:         @@@@  +@@@   `@@@    @@@@,@@@     ...    @@@.    @@@@
+ @@@@@@. @@@:         @@@@  +@@@   `@@@    `@@@@@@@            @@@.    @@@@
+ @@@@@@@ @@@:         @@@@  +@@@   `@@@     @@@@@@`          :@@@@.    @@@@
+ @@@@@@@ @@@:         @@@@  +@@@   `@@@     '@@@@@         .@@@@@@.    @@@@
+ @@@@+@@:@@@:         @@@@  +@@@   `@@@      @@@@;       `@@@@@@@;     @@@@
+ @@@@ @@@@@@:         @@@@  +@@@   `@@@      @@@@       @@@@@@@+       @@@@
+ @@@@ @@@@@@:         @@@@  +@@@   `@@@      #@@@       @@@@@#         @@@@
+ @@@@ ;@@@@@:  ```    @@@@  +@@@   `@@@      #@@@       @@@@           @@@@
+ @@@@  @@@@@:  @@@+   @@@@  +@@@   `@@@      #@@@       @@@`           @@@@
+ @@@@  @@@@@:  @@@+   @@@@  +@@@   `@@@      #@@@       @@@`   '''     @@@@
+ @@@@  ,@@@@:  @@@@   @@@@  +@@@   .@@@      #@@@       @@@`   @@@.    @@@@
+ @@@@   @@@@:  @@@@@@@@@@@  '@@@@@@@@@@      #@@@       @@@@@@@@@@.    @@@@
+ @@@@   @@@@:  @@@@@@@@@@:   @@@@@@@@@@      #@@@       @@@@@@@@@@.    @@@@
+ @@@@   `@@@:   @@@@@@@@@    #@@@@@@@@       #@@@       @@@@@@@@@@.    @@@@
+ @@@+    @@@.    :@@@@#,       ;++++,        .+++       ++++++++++     ;+++
+
+===========================================================================
+
+
+ reconr...reconstruct pointwise cross sections in pendf format            0.0s
+
+ unit for endf tape ...................         20
+ unit for pendf tape ..................         21
+
+ label for pendf tape
+ ------------------------------------------------------------------
+ Am241 JEFF4.0                                                       
+
+ tape label
+ ------------------------------------------------------------------
+ JEFF-4.0 Incident Neutron File                                      
+
+ material to be processed .............       9543
+ reconstruction tolerance .............      0.010
+ reconstruction temperature ...........       0.00k
+ resonance-integral-check tolerance ...      0.100
+ max resonance-integral error .........  5.000E-07
+
+ descriptive cards for pendf tape
+ ------------------------------------------------------------------
+                                                                     
+ 
+
+ processing mat 9543 in endf-6 format
+ ------------------------------------------------------------------
+  95-Am-241            EVAL-JUL20 JEFF collaboration                 
+
+ resonance range information
+ ----------------------------------
+ ier     energy-range     lru lrf  method
+  1  1.000E-05 1.500E+02   1   2   normal
+  2  1.500E+02 4.000E+04   2   2   normal
+   samm max legendre order:  0
+
+ changed threshold from 6.674910E+06 to 6.674915E+06 for mt 16.
+
+ changed threshold from 1.265130E+07 to 1.265133E+07 for mt 17.
+
+ changed threshold from 6.704150E+06 to 6.704157E+06 for mt 25.
+
+ changed threshold from 4.498700E+06 to 4.498707E+06 for mt 28.
+
+ changed threshold from 1.106020E+07 to 1.106030E+07 for mt 41.
+
+ changed threshold from 1.673010E+07 to 1.673012E+07 for mt 42.
+
+ changed threshold from 4.134829E+04 to 4.134830E+04 for mt 51.
+
+ changed threshold from 9.404186E+04 to 9.404187E+04 for mt 52.
+
+ changed threshold from 1.586611E+05 to 1.586612E+05 for mt 53.
+
+ changed threshold from 2.067445E+05 to 2.067446E+05 for mt 54.
+
+ changed threshold from 2.349791E+05 to 2.349792E+05 for mt 55.
+
+ changed threshold from 2.359833E+05 to 2.359834E+05 for mt 56.
+
+ changed threshold from 2.400001E+05 to 2.400002E+05 for mt 57.
+
+ changed threshold from 2.731381E+05 to 2.731382E+05 for mt 58.
+
+ changed threshold from 2.741423E+05 to 2.741424E+05 for mt 59.
+
+ changed threshold from 3.213390E+05 to 3.213391E+05 for mt 60.
+
+ changed threshold from 3.815901E+05 to 3.815902E+05 for mt 61.
+
+ changed threshold from 4.609206E+05 to 4.609207E+05 for mt 62.
+
+ changed threshold from 4.737842E+05 to 4.737843E+05 for mt 63.
+
+ changed threshold from 4.970713E+05 to 4.970714E+05 for mt 64.
+
+ changed threshold from 5.065588E+05 to 5.065589E+05 for mt 65.
+
+ changed threshold from 5.452721E+05 to 5.452722E+05 for mt 66.
+
+ changed threshold from 5.512972E+05 to 5.512973E+05 for mt 67.
+
+ changed threshold from 6.257073E+05 to 6.257074E+05 for mt 68.
+
+ changed threshold from 6.395258E+05 to 6.395259E+05 for mt 69.
+
+ changed threshold from 6.548176E+05 to 6.548177E+05 for mt 70.
+
+ changed threshold from 6.559633E+05 to 6.559634E+05 for mt 71.
+
+ changed threshold from 6.730445E+05 to 6.730446E+05 for mt 72.
+
+ changed threshold from 6.848537E+05 to 6.848538E+05 for mt 73.
+
+ changed threshold from 7.350629E+05 to 7.350630E+05 for mt 74.
+
+ changed threshold from 8.254395E+05 to 8.254396E+05 for mt 75.
+
+ changed threshold from 8.876990E+05 to 8.876991E+05 for mt 76.
+
+ changed threshold from 9.559835E+05 to 9.559836E+05 for mt 77.
+
+ changed threshold from 9.861090E+05 to 9.861091E+05 for mt 78.
+
+ changed threshold from 1.255230E+06 to 1.255231E+06 for mt 79.
+
+ changed threshold from 1.446025E+06 to 1.446026E+06 for mt 80.
+
+ changed threshold from 1.958159E+06 to 1.958160E+06 for mt 81.
+
+ changed threshold from 2.158996E+06 to 2.158997E+06 for mt 82.
+
+ changed threshold from 2.309624E+06 to 2.309625E+06 for mt 83.
+
+ changed threshold from 2.500419E+06 to 2.500420E+06 for mt 84.
+
+ changed threshold from 2.952302E+06 to 2.952303E+06 for mt 85.
+
+ changed threshold from 3.202344E+06 to 3.202345E+06 for mt 86.
+
+ changed threshold from 3.402177E+06 to 3.402178E+06 for mt 87.
+
+ changed threshold from 3.552804E+06 to 3.552805E+06 for mt 88.
+
+ changed threshold from 3.752637E+06 to 3.752638E+06 for mt 89.
+
+ changed threshold from 3.853055E+06 to 3.853056E+06 for mt 90.
+
+ changed threshold from 9.871132E+05 to 9.871133E+05 for mt 91.
+
+ number of user and resonance nodes           =     678
+ points in initial unionized grid             =    1214
+ points added by linearization                =     167                   0.6s
+
+               estimated maximum error due to
+               resonance integral check (errmax,errint)
+
+    upper      elastic   percent   capture   percent   fission   percent
+    energy     integral   error    integral   error    integral   error
+  1.00E-05
+  1.00E-04     3.10E+01   0.000    5.21E+04   0.000    2.23E+02   0.000
+  1.00E-03     3.10E+01   0.000    1.65E+04   0.000    7.04E+01   0.000
+  1.00E-02     3.08E+01   0.000    5.17E+03   0.000    2.21E+01   0.000
+  1.00E-01     2.88E+01   0.000    1.56E+03   0.000    6.73E+00   0.000
+  1.00E+00     2.84E+01   0.000    2.61E+03   0.000    1.09E+01   0.000
+  2.00E+00     1.24E+01   0.000    6.16E+02   0.000    3.58E+00   0.000
+  5.00E+00     1.03E+01   0.000    1.49E+02   0.000    5.13E-01   0.000
+  1.00E+01     9.25E+00   0.000    1.04E+02   0.000    1.03E+00   0.000
+  2.00E+01     9.41E+00   0.000    7.02E+01   0.000    2.69E-01   0.000
+  5.00E+01     1.09E+01   0.000    5.24E+01   0.000    2.81E-01   0.000
+  1.00E+02     9.70E+00   0.000    3.44E+01   0.000    2.02E-01   0.000
+
+ points added by resonance reconstruction     =   12171
+ points affected by resonance integral check  =       0
+ final number of resonance points             =   12895
+ number of points in final unionized grid     =   13552
+                                                                          1.6s
+ *****************************************************************************
+
+ broadr...doppler broadening of endf data                                 1.6s
+
+ unit for input endf tape .............         20
+ unit for input pendf tape ............         21
+ unit for output pendf tape ...........         22
+ material to be processed .............       9543
+ number of final temperatures .........          3
+ restart (0 no, 1 yes) ................          0
+ bootstrap (0 no, 1 yes) ..............          0
+ starting material temperature ........        0.0k
+ thinning tolerance ...................      0.010
+ max. energy ..........................  6.500E+06
+ errmax for thinning ..................  1.000E-01
+ errint for thinning ..................  5.000E-07
+ final temperatures ...................  3.000E+02
+                                         6.000E+02
+                                         9.000E+02
+
+ files are in endf-6 format
+
+ resolved resonance range upper limit         =    1.50000E+02 eV.
+
+ final maximum energy for broadening/thinning =    1.50000E+02 eV
+                                                                          1.9s
+
+ broadened mat9543 from  0.0000E+00 to  3.0000E+02 k
+         points in=  13552  points out=   7094
+         mt   2   5  18 102 107
+                                                                          2.4s
+
+ broadened mat9543 from  0.0000E+00 to  6.0000E+02 k
+         points in=  13552  points out=   5907
+         mt   2   5  18 102 107
+                                                                          2.9s
+
+ broadened mat9543 from  0.0000E+00 to  9.0000E+02 k
+         points in=  13552  points out=   5328
+         mt   2   5  18 102 107
+                                                                          3.4s
+ *****************************************************************************
+
+ unresr...calculation of unresolved resonance cross sections              3.4s
+
+ unit for input endf tape .............         20
+ unit for input pendf tape ............         22
+ unit for output pendf tape ...........         23
+
+ temperatures .........................  3.000E+02
+                                         6.000E+02
+                                         9.000E+02
+ sigma zero values ....................  1.000E+00
+
+ print option (0 min., 1 max.) ........          0
+
+ mat = 9543    temp =  3.000E+02                                          3.4s
+ generated cross sections at  40 points                                   3.8s
+
+ mat = 9543    temp =  6.000E+02                                          3.8s
+ generated cross sections at  40 points                                   4.0s
+
+ mat = 9543    temp =  9.000E+02                                          4.0s
+ generated cross sections at  40 points                                   4.2s
+
+                                                                          4.2s
+ *****************************************************************************
+
+ heatr...prompt kerma                                                     4.2s
+
+ input endf unit ......................         20
+ input pendf unit .....................         23
+ output pendf unit ....................         24
+ mat to be processed ..................       9543
+ no. temperatures (0=all) .............          0
+ gamma heat (0 nonlocal, 1 local) .....          0
+ print option (0 min, 1 more, 2 chk) ..          0
+ damage displacement energy ...........    default
+
+ default damage energy = 25.0 ev
+
+ fission energy components
+
+   fission products: thermal point
+   prompt neutrons : thermal point
+   prompt gammas   : thermal point
+                                                             temp 1       4.9s
+
+ ---message from nheat---changed q from   2.019601E+08 to   1.908281E+08
+                          for mt  18 by taking out delayed components
+                                                             temp 1       5.6s
+
+ fission energy components
+
+   fission products: thermal point
+   prompt neutrons : thermal point
+   prompt gammas   : thermal point
+                                                             temp 2       7.0s
+
+ ---message from nheat---changed q from   2.019601E+08 to   1.908281E+08
+                          for mt  18 by taking out delayed components
+                                                             temp 2       7.6s
+
+ fission energy components
+
+   fission products: thermal point
+   prompt neutrons : thermal point
+   prompt gammas   : thermal point
+                                                             temp 3       8.8s
+
+ ---message from nheat---changed q from   2.019601E+08 to   1.908281E+08
+                          for mt  18 by taking out delayed components
+                                                             temp 3       9.4s
+
+                                                                          9.9s
+ *****************************************************************************
+
+ groupr...compute self-shielded group-averaged cross-sections             9.9s
+
+ unit for endf tape ...................         20
+ unit for pendf tape ..................         24
+ unit for input gout tape .............          0
+ unit for output gout tape ............         25
+ mat to be processed ..................       9543
+ neutron group structure option .......          1
+ gamma group option ...................          0
+ weight function option ...............          8
+ legendre order .......................          8
+ print option (0 min, 1 max) ..........          1
+ smoothing option (0 off, 1 on) .......          1
+
+ run title
+ --------------------------------------
+      Am241 JEFF4.0                                                     
+ 
+ temperatures (kelvin) ................   3.00E+02
+                                          6.00E+02
+                                          9.00E+02
+ sigma zeroes .........................   infinity
+
+ neutron group structure......read in
+     1   1.00000E-05  -  1.00000E+00
+     2   1.00000E+00  -  1.00000E+02
+     3   1.00000E+02  -  1.00000E+03
+     4   1.00000E+03  -  2.00000E+06
+
+ weight function...thermal--1/e--fast reactor--fission + fusion
+
+ using endf-6 format
+
+ processing mat   9543
+ --------------------------------------
+                                                                      
+ 
+ group constants at t=3.000E+02 deg k                                    10.6s
+ for mf  3 and mt  1 total                                                       
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    9.71440+2
+  flx   2.92914-2
+     2    2.20324+2
+  flx   4.49633-2
+     3    3.04841+1
+  flx   1.28739+0
+     4    1.28612+1
+  flx   9.22890+1
+ 
+ group constants at t=3.000E+02 deg k                                    10.6s
+ for mf  3 and mt102 ngamma                                                      
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    9.55125+2
+     2    2.05645+2
+     3    1.65708+1
+     4    2.10533+0
+ 
+ group constants at t=3.000E+02 deg k                                    10.7s
+ for mf  3 and mt 18 fission                                                     
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    4.02286+0
+     2    1.17578+0
+     3    8.22054-2
+     4    1.86219-1
+ 
+ group constants at t=3.000E+02 deg k                                    10.8s
+ for mf  3 and mt259 inv                                                         
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    2.01273-4
+     2    2.62940-5
+     3    3.12889-6
+     4    3.87503-7
+ 
+ group constants at t=3.000E+02 deg k                                    10.8s
+ for mf  3 and mt452 nubar                                                       
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    3.10181+0
+     2    3.10181+0
+     3    3.10189+0
+     4    3.27947+0
+ 
+ group constants at t=3.000E+02 deg k                                    10.8s
+ for mf  5 and mt 18 chi                                                         
+
+ spectrum constant below 1.0000E+03 ev  (   3 groups)
+ 
+ normalized fission spectrum
+ 
+     1    3.6108-10  3.60705-7  1.10540-5  9.99989-1
+ 
+ group constants at t=3.000E+02 deg k                                    11.1s
+ for mf  6 and mt  2 elastic                                                     
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     1      1   1.22926+1  3.42952-2  4.30242-5  0.00000+0  0.00000+0  0.00000+0  0.00000+0  0.00000+0  0.00000+0
+     2      1   1.44855-2 -4.77825-3 -3.01120-5 -1.14222-7  2.52085-8 -5.59279-8  1.09465-8 -5.99610-8 -1.17058-7
+     2      2   1.34891+1  4.28490-2  8.02421-5  1.14222-7 -2.52085-8  5.59279-8 -1.09465-8  6.27331-8 -6.98863-8
+     3      2   2.21609-3 -7.28832-4  3.99536-5 -4.51045-5  8.77338-6  3.97669-6 -6.53598-6  3.60912-6  2.33723-7
+     3      3   1.38289+1  4.85924-2  7.63464-5  4.51045-5 -8.77338-6 -3.97669-6  6.53598-6 -3.60870-6 -2.61349-7
+     4      3   2.39192-3 -7.94112-4 -1.91533-6 -1.34146-8  2.62908-9 -1.01666-8  2.66286-9 -9.94705-9 -1.93675-8
+     4      4   1.00250+1  1.31266+0  3.34292-1  1.34425-1  5.46682-2  1.16428-2  3.40306-3  5.03926-4  1.01183-4
+ 
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  6.67E+06 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  7.00E+06 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  7.40E+06 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  8.00E+06 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  8.50E+06 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  9.00E+06 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  1.00E+07 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  1.20E+07 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  1.40E+07 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  1.60E+07 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  1.80E+07 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  2.00E+07 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  2.20E+07 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  2.40E+07 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  2.60E+07 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  2.80E+07 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  3.00E+07 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  2.00E+08 eV
+
+ threshold is above highest energy bound for mt 16
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 51 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      2   3.22579-7 -1.44036-8 -2.9750-10 -4.0832-11 -4.7222-13 -1.9877-11  6.9937-12 -1.7503-11  4.0180-12
+     4      3   3.15380-5 -3.77991-7 -5.37531-9 -2.3898-10  7.7036-11 -1.8293-10  7.6113-11 -1.7987-10  6.9810-11
+     4      4   2.29226-1  7.84613-3 -2.62500-3 -1.23025-3  9.76266-5  6.73246-5  1.26223-4 -1.35546-5  8.44076-6
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 52 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      2   1.64380-8 -1.03610-9 -3.7692-11 -5.8261-12 -5.7157-13 -2.2154-12  6.6687-13 -1.3033-12 -5.9806-13
+     4      3   1.60300-6 -2.88472-8 -4.03182-9 -2.0381-12  8.7087-12 -2.0311-11  8.2758-12 -1.9860-11  7.5535-12
+     4      4   7.79005-2  1.86765-3 -1.69940-3 -2.52821-4 -1.12664-5  8.64638-6  3.33356-5 -5.96089-6  2.58679-6
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 53 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      2   4.71389-9 -3.7099-10 -1.5007-11 -3.5304-12 -5.3324-13 -1.0820-12  9.2429-14  1.2754-14 -2.0582-12
+     4      3   4.59161-7 -1.18522-8  1.54491-9 -3.7834-11  3.4766-12 -1.0156-11  4.1126-12 -9.8017-12  3.6182-12
+     4      4   2.02643-2  8.26491-4  2.70819-4 -6.39090-5  5.77677-6  8.30825-6 -9.18540-7 -3.57198-7  7.41564-8
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 54 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      2   7.86862-8 -6.86742-9 -3.6310-10 -8.1771-11 -1.4420-11 -2.2859-11 -3.6308-13  5.5145-12 -4.8340-11
+     4      3   7.63491-6 -2.16954-7 -2.73731-9 -3.6530-10  7.9177-11 -2.1348-10  8.5814-11 -2.0462-10  7.5552-11
+     4      4   4.83110-2  6.85636-5  6.44895-4 -8.22537-5  5.40044-5 -5.69205-5  2.73740-5 -1.09981-5  1.19800-6
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 55 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      3   7.18073-9 -1.9743-10 -1.6232-11  1.5801-12  2.2495-13 -3.3651-13 -1.8245-14 -2.3988-14  5.3622-14
+     4      4   4.68908-3  3.26168-4  9.77325-5 -2.44700-5 -2.15493-6  2.89636-6 -8.42655-7 -1.39027-7  4.28179-9
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 56 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      2   2.80436-8 -2.57261-9 -1.4685-10 -3.4701-11 -6.6558-12 -9.3397-12 -6.6806-13  3.3147-12 -1.9945-11
+     4      3   2.71413-6 -8.22546-8 -1.22400-9 -1.4964-10  3.2026-11 -8.6173-11  3.4459-11 -8.2442-11  3.0046-11
+     4      4   3.76504-2 -2.82143-4  2.96225-4 -2.28797-5 -4.18045-6 -2.98650-5  1.18663-5 -6.86854-6  5.62195-7
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 57 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      4   6.47436-4  2.06271-6  1.13005-5  1.12484-7 -2.41256-6 -3.10830-8 -6.24224-8 -1.08604-9 -6.0991-10
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 58 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      2   1.89107-8 -1.83371-9 -1.1465-10 -2.8438-11 -5.9128-12 -7.2671-12 -9.0508-13  3.4029-12 -1.5460-11
+     4      3   1.81997-6 -5.54737-8 -3.09575-9  3.7070-10  6.7984-11 -9.2019-11 -3.7864-12 -9.0403-12  1.5032-11
+     4      4   1.88407-2 -1.87967-4 -3.53002-4  3.69912-5 -6.22837-6 -1.18125-6 -1.24160-6 -9.87200-7  7.63482-8
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 59 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      2   1.48218-8 -1.44049-9 -9.0122-11 -2.2441-11 -4.6192-12 -5.7105-12 -7.3442-13  2.6761-12 -1.2153-11
+     4      3   1.43039-6 -4.63114-8 -8.0193-10 -9.2008-11  1.8844-11 -5.2605-11  2.0945-11 -5.0200-11  1.8076-11
+     4      4   2.34481-2  1.08506-4  4.68713-5  4.16097-7  3.73328-7  2.35022-8  1.58650-9 -1.51870-9 -4.51514-9
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 60 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      3   3.49198-8 -1.21357-9 -3.6588-11 -2.4102-12  5.3585-13 -1.4958-12  5.9153-13 -1.4179-12  5.0312-13
+     4      4   6.22996-3  3.04909-5 -8.14249-5 -8.94457-7  1.96977-6  7.82898-8  9.16270-8 -2.78439-9 -1.08270-8
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 61 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      3   1.03523-8 -3.9547-10  5.0187-12 -1.3200-12  1.7131-13 -5.3125-13  2.0792-13 -5.0004-13  1.7463-13
+     4      4   2.15231-3  1.42945-5  3.92683-5  3.37302-7  2.17570-6  8.47126-8  1.74387-8 -4.22304-9 -1.13109-8
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 62 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      4   9.33490-5  3.10412-7  2.95380-6  2.69072-8 -5.22561-7 -6.67134-9 -3.46337-8 -6.7702-10 -1.8596-10
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 63 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      2   1.91254-9 -2.2912-10 -2.0049-11 -6.0675-12 -1.5740-12 -1.3635-12 -2.9361-13  9.0285-13 -2.1953-12
+     4      3   1.81654-7 -7.56672-9 -2.1479-10 -2.1422-11  3.6577-12 -1.1362-11  4.4075-12 -1.0626-11  3.6268-12
+     4      4   9.06865-3  4.58033-5 -2.26670-5 -4.11085-7 -1.09347-6 -2.81633-8 -2.81357-7 -9.64127-9 -1.5966-10
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 64 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      4   2.85058-5  9.34179-8  2.58534-6  2.21305-8  1.42710-7  1.94012-9  9.78095-9  1.8800-10  8.2628-11
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 65 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      2   4.02736-9 -4.9557-10 -4.4687-11 -1.3740-11 -3.3861-12 -2.8049-12 -3.7461-13  2.3224-12 -4.5453-12
+     4      3   3.81652-7 -1.64970-8 -2.2095-10 -5.6884-11  7.9009-12 -2.5615-11  9.8166-12 -2.3852-11  8.1216-12
+     4      4   1.04233-2  5.51221-5  1.94466-4  2.36913-6  3.97612-6  7.56322-8  3.96171-7  6.32958-9 -2.17155-9
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 66 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      2   1.04511-9 -1.3210-10 -1.2592-11 -4.0179-12 -1.0969-12 -8.9483-13 -1.8124-13  5.9837-13 -1.2842-12
+     4      3   9.86935-8 -4.38452-9 -1.3385-10 -1.3753-11  2.1879-12 -7.0757-12  2.7067-12 -6.5660-12  2.2137-12
+     4      4   2.42425-3  1.70309-5 -5.94647-5 -1.95496-6 -1.58416-6 -3.52800-8  2.46647-7 -1.67261-8 -1.93002-8
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 67 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      2   1.29365-9 -1.6416-10 -1.5736-11 -5.0498-12 -1.3860-12 -1.1252-12 -2.2633-13  7.5317-13 -1.5989-12
+     4      3   1.22089-7 -5.45552-9 -1.5628-10 -1.7628-11  2.7038-12 -8.8510-12  3.3923-12 -8.2166-12  2.7685-12
+     4      4   7.76010-3  3.74011-5  2.65472-6 -4.09639-7  2.99385-7 -7.73636-7  1.65100-8 -1.28317-7 -6.50702-9
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 68 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      3   3.30492-8 -3.89805-9 -8.4184-11 -7.1098-14  2.7678-12 -4.0491-12  1.8103-12 -3.7616-12  1.4490-12
+     4      4   1.51675-3  8.34734-6 -2.92232-5 -3.69272-7 -1.40588-6 -2.76982-8 -1.80975-8 -2.03799-9  1.7452-10
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 69 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      3   2.17973-8 -3.96798-9  2.3194-11  9.6442-12  3.4863-12 -3.6326-12  1.9382-12 -3.3996-12  1.5756-12
+     4      4   3.72368-3  2.16572-5 -5.85680-6 -1.59274-7 -5.04422-7  2.78486-9 -1.44832-7 -3.78654-9 -1.85845-9
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 70 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      3   7.38180-8 -3.52780-9 -1.8630-10  6.9083-12 -9.3047-12  1.2589-12 -1.4461-12 -2.4879-12 -4.7338-13
+     4      4   1.77949-3  1.25494-5 -4.08551-5 -1.38001-6 -1.06571-6 -3.16361-8  2.43921-7 -1.06744-8 -1.22399-8
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 71 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      2   1.35887-9 -1.8377-10 -1.9511-11 -6.7348-12 -1.9938-12 -1.5206-12 -2.6844-13  1.0519-12 -1.9159-12
+     4      3   1.27009-7 -6.15026-9 -1.7226-10 -2.3424-11  3.1372-12 -1.0920-11  4.1150-12 -1.0032-11  3.2942-12
+     4      4   2.78463-3  1.44628-5  6.96169-6 -9.50573-8  5.19659-7 -2.77773-7  8.62191-8 -4.33741-8 -2.18358-9
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 72 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      3   8.72436-8 -4.27494-9 -1.2154-10 -1.6609-11  2.1696-12 -7.6928-12  2.8962-12 -7.0557-12  2.3097-12
+     4      4   2.71186-3  2.04282-5 -1.47326-5 -1.73745-6 -4.59746-8 -2.99841-8  4.01649-7 -2.13054-8 -2.28975-8
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 73 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      3   1.83592-8 -9.0861-10 -2.1963-11 -3.7353-12  4.6449-13 -1.6491-12  6.1883-13 -1.5096-12  4.9272-13
+     4      4   1.76336-3  8.97462-6 -1.76485-5 -1.18255-7  3.00579-7 -2.20142-8  1.03003-7 -6.76871-9  1.68752-9
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 74 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      4   1.30511-4  1.22793-6  1.43604-6 -4.63862-8 -3.74088-7 -4.27128-9 -1.07133-8 -1.2610-10 -3.7226-11
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 75 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      3   3.41497-8 -1.83217-9 -6.5915-11 -8.0322-12  9.5747-13 -3.6595-12  1.3501-12 -3.3223-12  1.0493-12
+     4      4   1.30976-3  1.05443-5 -1.61217-5 -3.41231-7 -8.95549-7 -1.64705-9 -1.03864-8 -1.28317-9 -1.46604-9
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 76 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      4   5.09402-7  1.97678-9  3.07197-8  3.7503-10 -4.63447-9 -6.7952-11 -6.0067-10 -1.3633-11 -6.3514-12
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 77 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      3   1.90031-8 -1.09817-9 -2.6612-11 -6.1334-12  5.4465-13 -2.3662-12  8.5878-13 -2.1207-12  6.5173-13
+     4      4   1.22995-3  1.04783-5  7.23634-6 -3.11501-7 -3.85491-7 -4.90039-8  3.07501-7 -8.33670-9 -8.22545-9
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 78 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      3   1.37805-8 -7.1190-10 -7.4563-11  7.7907-12  2.4751-12 -2.4897-12 -4.0716-13 -7.3686-15 -3.3537-13
+     4      4   2.35989-4  4.45489-6 -2.20538-8 -1.23453-7  5.67683-8  1.31968-8  3.14477-9 -7.3009-10 -7.5726-10
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 79 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      4   7.10668-4  4.24383-6  1.23756-8  5.5938-13 -1.2320-13  1.6217-13 -5.7372-14  1.4422-13 -4.4557-14
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 80 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      3   3.10512-9 -2.1530-10 -9.3673-12 -1.6154-12  2.3312-14 -6.1642-13  5.5153-14 -3.1360-14 -1.8037-12
+     4      4   9.55499-5  7.16891-7  3.01562-9  2.1568-12 -5.2202-13  5.8859-13 -2.0619-13  5.1852-13 -1.8124-13
+ 
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  6 and mt 81 inelastic                                                   
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      4   5.63889-7  1.39172-8  1.9003-10  3.5422-13 -1.3659-13  8.2818-14 -2.9020-14  8.8953-14 -1.4961-13
+ 
+
+ threshold is above highest energy bound for mt 82
+ 
+
+ threshold is above highest energy bound for mt 83
+ 
+
+ threshold is above highest energy bound for mt 84
+ 
+
+ threshold is above highest energy bound for mt 85
+ 
+
+ threshold is above highest energy bound for mt 86
+ 
+
+ threshold is above highest energy bound for mt 87
+ 
+
+ threshold is above highest energy bound for mt 88
+ 
+
+ threshold is above highest energy bound for mt 89
+ 
+
+ threshold is above highest energy bound for mt 90
+ 
+ extending histogram as sqrt(E) below  1.00E+00 eV for E=  9.86E+05 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  1.00E+06 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  1.40E+06 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  1.80E+06 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  2.20E+06 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  2.60E+06 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  3.00E+06 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  3.40E+06 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  3.80E+06 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  4.20E+06 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  4.60E+06 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  5.00E+06 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  5.40E+06 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  5.80E+06 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  6.20E+06 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  6.60E+06 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  7.00E+06 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  7.40E+06 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  7.80E+06 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  8.20E+06 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  8.60E+06 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  9.00E+06 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  9.40E+06 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  9.80E+06 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  1.02E+07 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  1.06E+07 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  1.10E+07 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  1.20E+07 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  1.30E+07 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  1.40E+07 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  1.50E+07 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  1.60E+07 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  1.70E+07 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  1.80E+07 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  1.90E+07 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  2.00E+07 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  2.20E+07 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  2.40E+07 eV
+ extending histogram as sqrt(E) below  3.49E+03 eV for E=  2.60E+07 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  2.80E+07 eV
+ extending histogram as sqrt(E) below  1.49E+03 eV for E=  3.00E+07 eV
+     normalization   9.8611E+05   9.792517E-01
+ group constants at t=3.000E+02 deg k                                    12.1s
+ for mf  8 and mt 91 inelastic(continuum)                                        
+ 
+ initl  final  group constants vs legendre order
+ group  group  0          1          2          3          4
+ 
+     4      2   2.67108-8  9.2783-10  1.03584-9  8.0144-10  6.5634-10  4.3495-10  3.4300-10  2.1865-10  2.2398-10
+     4      3   8.26837-7  2.42029-9  9.83693-9  5.45041-9  3.71955-9  2.45946-9  2.09526-9  1.74393-9  1.58412-9
+     4      4   2.17602-2  1.56162-4  4.84940-5 -5.72279-6 -4.36961-7 -3.16792-6 -3.84378-7  1.39503-6  1.14770-6
+ 
+ group constants at t=3.000E+02 deg k                                    13.1s
+ for mf  3 and mt301 heat                                                        
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    7.16631+8
+     2    2.09451+8
+     3    1.46441+7
+     4    3.31763+7
+ 
+
+ processing mat   9543
+ --------------------------------------
+                                                                      
+ 
+ group constants at t=6.000E+02 deg k                                    13.3s
+ for mf  3 and mt  1 total                                                       
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    9.71805+2
+  flx   2.92914-2
+     2    2.20305+2
+  flx   4.49633-2
+     3    3.04847+1
+  flx   1.28739+0
+     4    1.28612+1
+  flx   9.22890+1
+ 
+ group constants at t=6.000E+02 deg k                                    13.3s
+ for mf  3 and mt102 ngamma                                                      
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    9.55482+2
+     2    2.05625+2
+     3    1.65715+1
+     4    2.10533+0
+ 
+ group constants at t=6.000E+02 deg k                                    13.4s
+ for mf  3 and mt 18 fission                                                     
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    4.02502+0
+     2    1.17572+0
+     3    8.22082-2
+     4    1.86219-1
+ 
+ group constants at t=6.000E+02 deg k                                    13.4s
+ for mf  3 and mt452 nubar                                                       
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    3.10181+0
+     2    3.10181+0
+     3    3.10189+0
+     4    3.27947+0
+ 
+ group constants at t=6.000E+02 deg k                                    13.5s
+ for mf  3 and mt  2 elastic                                                     
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    1.22983+1
+     2    1.35048+1
+     3    1.38311+1
+     4    1.00274+1
+ 
+
+ processing mat   9543
+ --------------------------------------
+                                                                      
+ 
+ group constants at t=9.000E+02 deg k                                    13.6s
+ for mf  3 and mt  1 total                                                       
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    9.72259+2
+  flx   2.92914-2
+     2    2.20359+2
+  flx   4.49634-2
+     3    3.04850+1
+  flx   1.28739+0
+     4    1.28612+1
+  flx   9.22890+1
+ 
+ group constants at t=9.000E+02 deg k                                    13.7s
+ for mf  3 and mt102 ngamma                                                      
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    9.55928+2
+     2    2.05677+2
+     3    1.65717+1
+     4    2.10533+0
+ 
+ group constants at t=9.000E+02 deg k                                    13.7s
+ for mf  3 and mt 18 fission                                                     
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    4.02755+0
+     2    1.17600+0
+     3    8.22092-2
+     4    1.86219-1
+ 
+ group constants at t=9.000E+02 deg k                                    13.7s
+ for mf  3 and mt452 nubar                                                       
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    3.10180+0
+     2    3.10181+0
+     3    3.10189+0
+     4    3.27947+0
+ 
+ group constants at t=9.000E+02 deg k                                    13.7s
+ for mf  3 and mt  2 elastic                                                     
+ 
+ enrgy  group constants at
+ group  infinite dilution
+ 
+     1    1.23030+1
+     2    1.35062+1
+     3    1.38311+1
+     4    1.00274+1
+ 
+                                                                         13.9s
+ *****************************************************************************
