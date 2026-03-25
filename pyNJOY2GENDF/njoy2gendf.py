@@ -1,13 +1,20 @@
 import os 
 import glob
 import pickle
+import re
 import numpy as np
-from pyNJOY2GENDF.templates import default_BROADR, default_GROUPR, default_HEATR, default_RECONR, default_UNRESR, RXN
+from pyNJOY2GENDF.card8 import WeightingFlux, GROUPRCard8
+from pyNJOY2GENDF.templates import default_BROADR, default_GROUPR, default_HEATR, default_RECONR, default_UNRESR, default_PURR, RXN, GROUPRCard8
 import shutil
 import subprocess
 from pyNJOY2GENDF.njoy_err_analysis import write_only_errors_to_file
 import datetime
 import glob
+import warnings
+from pyNJOY2GENDF.wims_params import WIMS_EHI_SIGPOT, WIMS_PURR
+
+# parallel run of NJOY
+from multiprocessing import Pool
 
 class njoy2gendf:
     def __init__(self, savedir:str, path2endf:str, njoy_exec:str='njoy21', nuclide_list:list[str]=['U235', 'U238'],filename_convention='ENDF-B'):
@@ -27,7 +34,7 @@ class njoy2gendf:
         os.makedirs(savedir, exist_ok=True)
         self.savedir = savedir
 
-        assert os.path.exists(path2endf)
+        assert os.path.exists(path2endf), f'Path to ENDF files does not exist: {path2endf}'
         self.path2endf = path2endf
         self.njoy_exec = njoy_exec
         self.nuclide_list = nuclide_list
@@ -55,10 +62,15 @@ class njoy2gendf:
         return result
 
     def write_njoy_gendf_inputs(self, 
+                                t300_rxns:dict[str, list[RXN]]=None,
+                                tother_rxns:dict[str, list[RXN]]=None,
                                 energybin_edges=[1e-5, 0.025, 1e6],
                                 library_name='ENDF-B/VIII',
                                 temperatures = [300.,    600.,    900],
                                 sig0s = [1.e10,   1.e5,    1.e4,    1000.,   100.,    10.,     1.],
+                                use_PURR:list[str]=[], # if nuclide is in use_PURR then PURR: unresolved resonance data processing for isotopes will be used instead of UNRESR (default)
+                                use_HEATR:bool=True,
+                                card8_params:dict[str, GROUPRCard8] | None = None,
                                 ):
         '''This writes NJOY inputs similar to what KM provided. 
 
@@ -76,7 +88,11 @@ class njoy2gendf:
         nuclide_list : list of str
             nuclide names
 
-        energy_bin_edges : lsit of float
+        t300_rxns : dict of nuclide to list of RXN objects for base temperature
+
+        tother_rxns : dict of nuclide to list of RXN objects for other temperatures
+
+        energy_bin_edges : list of float
             eV for default NJOY. note that SERPENT is default MeV
 
         library_name : str
@@ -88,16 +104,92 @@ class njoy2gendf:
         sig0s : list of floats
             background XS 
 
+        card8a_params : dict of str to GROUPRCard8
+            If a nuclide is in card8a_params, the corresponding GROUPRCard8 object will be used for that nuclide.
+
 
         '''
+
+
+        # valdiate reactions
+        if t300_rxns is None:
+            print('No rxns provided for base temperature (t300_rxns). Using default reactions based on ENDF file MT numbers and includes basic reactions', flush=True)
+            print(f'If you want to specify reactions, provide t300_rxns as a dict of nuclide to list of RXN objects for base temperature reactions. See get_T300_rxn method for details', flush=True)
+            t300_rxns = {nuclide: self.get_T300_rxn(self.find_endf_file_for_nuclide(nuclide), use_HEATR=use_HEATR) for nuclide in self.nuclide_list}
         
+        if ((tother_rxns is None) and (len(temperatures) > 1)):
+            print('No rxns provided for non-base temperature (tother_rxns). Using default reactions based on ENDF file MT numbers and includes basic reactions. For higher temperatures, only total, elastic, fission, (n,gamma), nubar, and heat (if HEATR is used) are included based on NJOY manual recommendation', flush=True)
+            print(f'If you want to specify reactions, provide tother_rxns as a dict of nuclide to list of RXN objects for other temperature reactions. See get_Tother_rxn method for details', flush=True)
+            tother_rxns = {nuclide: self.get_Tother_rxn(self.find_endf_file_for_nuclide(nuclide)) for nuclide in self.nuclide_list}
+
+        # Validate sig0s requirements
+        if len(sig0s) == 0:
+            raise ValueError("sig0s cannot be empty")
+        
+        # Check that sig0s are in strict descending order
+        for i in range(len(sig0s) - 1):
+            if sig0s[i] <= sig0s[i + 1]:
+                raise ValueError(
+                    f"sig0s must be in strict descending order. "
+                    f"Found sig0s[{i}]={sig0s[i]} <= sig0s[{i+1}]={sig0s[i+1]}"
+                )
+        
+        # Check that first sig0 value is 1.e10 (infinite dilution)
+        if abs(sig0s[0] - 1.e10) > 1.e-6:
+            raise ValueError(
+                f"sig0s[0] must be 1.e10 for infinite dilution. "
+                f"Got sig0s[0]={sig0s[0]}"
+            )
+        
+        # if card8a_params is None, then use WIMS parameters 
+        # if card8a_params is None:
+        #     print('No card8a_params provided. Using WIMS parameters for EHI and SIGPOT for nuclides that are available in the WIMS library. For nuclides not in the WIMS library, default iwt will be used and card 8a will be skipped.', flush=True)
+        #     card8a_params = {}
+        #     for nuclide in self.nuclide_list:
+        #         if nuclide in WIMS_EHI_SIGPOT.keys():
+        #             card8a_params[nuclide] = GROUPRCard8()
+        #             card8a_params[nuclide].fehi = WIMS_EHI_SIGPOT[nuclide][0]
+        #             card8a_params[nuclide].sigpot = WIMS_EHI_SIGPOT[nuclide][1]
+        #             card8a_params[nuclide].nflmax = 20000
+        #             card8a_params[nuclide].weightingflux = groupr_weighting_flux
+        #             card8a_params[nuclide].iwt = -1  # use -1 for flux weight calculator
+        #         else:
+        #             card8a_params[nuclide] = None
+
+        # if use_PURR is None:
+        #     use_PURR = WIMS_PURR
+
+
         os.makedirs(f'{self.savedir}/NJOY_INPUTS', exist_ok=True)
 
-        # iso2matd = self.loadisotope_matd('iso2matd_table.pkl')
+        # user input check for card 8
+        # if groupr_iwt == 'weighting_flux':
+        #     assert isinstance(groupr_weighting_flux, WeightingFlux), 'If groupr_iwt is "weighting_flux", groupr_weighting_flux must be provided as WeightingFlux object'
+        #     assert groupr_fehi_sigpot_dict is not None, 'If groupr_iwt is "weighting_flux", groupr_fehi_sigpot_dict must be provided'
+        # else:
+        #     assert np.abs(groupr_iwt) in range(2,13), '|groupr_iwt| must be integer between 2 and 8" if not using weighting flux'
+        #     assert groupr_weighting_flux is None, 'If |groupr_iwt| is 2-13, groupr_weighting_flux must be None'
 
-        print(f'Writing NJOY input to: {self.savedir}/NJOY_INPUTS. ENDF file read from: {self.path2endf}', flush=True)
+        # # if no groupr_fehi then instantiate empty dict
+        # if groupr_fehi_sigpot_dict is None:
+        #     groupr_fehi_sigpot_dict = {}
+
+
+        # iso2matd = self.loadisotope_matd('iso2matd_table.pkl')
+        print(f'NJOY2GENDF info: ')
+        print(f'Writing NJOY input to: {self.savedir}/NJOY_INPUTS. \n ENDF file read from: {self.path2endf}', flush=True)
+        print(f'The following nucldies will be processed: {self.nuclide_list} \n', flush=True)
+
+        purr_nucs = [nuclide for nuclide in self.nuclide_list if nuclide in use_PURR]
+
+        print(f'The following nuclides will use PURR instead of UNRESR for unresolved resonance processing: {purr_nucs} \n', flush=True)
 
         for nuclide in self.nuclide_list:
+            # Default tapes
+            endf_tape = 20
+            final_tape = 21
+
+            print('='*50, flush=True)
             print(f'Writing input for nuclide: {nuclide}', flush=True)
             
             # Get matds from the libary (note that between ENDF and JEFF there are small differences)
@@ -110,28 +202,55 @@ class njoy2gendf:
             header_comment = f'''-- Generated by njoy2GENDF.py on {datetime.datetime.now().strftime("%Y/%m/%d")} 
 -- for {nuclide} with library located at {self.path2endf} \n\n'''
             
-            reconr = self.generate_RECONR(nuclide, matd, library_name)
+            reconr = self.generate_RECONR(nendf=endf_tape, npend=final_tape, nuclide=nuclide, mat=matd, library=library_name)
 
-            broadr = self.generate_BROADR(mat=matd, temperatures=temperatures)
+            broadr = self.generate_BROADR(nendf=endf_tape, nin=final_tape, nout=final_tape+1, mat=matd, temperatures=temperatures)
+            final_tape += 1
 
-            unresr = self.generate_UNRESR(mat=matd, temperatures=temperatures, sig0s=sig0s)
 
-            heatr = self.generate_HEATR(mat=matd)
+            if nuclide in use_PURR:
+                print(f'Using PURR unresolved resonance processing for nuclide {nuclide}', flush=True)
+                unresr = self.generate_PURR(nendf=endf_tape, nin=final_tape, nout=final_tape+1, mat=matd, temperatures=temperatures, sig0s=sig0s)
+                final_tape += 1
+            else:
+                print(f'Using UNRESR unresolved resonance processing for nuclide {nuclide}', flush=True)
+                unresr = self.generate_UNRESR(nendf=endf_tape, nin=final_tape, nout=final_tape+1, mat=matd, temperatures=temperatures, sig0s=sig0s)
+                final_tape += 1
 
-            # get room temp reactions
-            t300_rxns = self.get_T300_rxn(nuclide)
+            if use_HEATR:
+                heatr = self.generate_HEATR(nendf=endf_tape, nin=final_tape, nout=final_tape+1, mat=matd)
+                final_tape += 1
+            else:
+                heatr = ''
 
-            # get temperature dependent reactions. See NJOY manual page 244.
-            tother_rxns = self.get_Tother_rxn(nuclide)
+            # # get room temp reactions
+            # t300_rxns = self.get_T300_rxn(nuclide, use_HEATR=use_HEATR)
 
-            groupr = self.generate_GROUPR(nuclide=nuclide, 
+            # # get temperature dependent reactions. See NJOY manual page 244.
+            # tother_rxns = self.get_Tother_rxn(nuclide)
+
+            card8_nuc = card8_params[nuclide]
+
+            rxn_base = t300_rxns[nuclide]
+            if tother_rxns is not None:
+                rxn_temp = tother_rxns[nuclide]
+            else:
+                rxn_temp = None
+
+            groupr = self.generate_GROUPR(
+                                          nendf=endf_tape,
+                                          npend=final_tape,
+                                          ngout2=final_tape+1,
+                                          nuclide=nuclide, 
                                           mat=matd, 
                                           library=library_name, 
                                           temperatures=temperatures, 
                                           sig0s=sig0s, 
                                           energybin_edges=energybin_edges, 
-                                          rxn_base=t300_rxns, 
-                                          rxn_temp=tother_rxns, 
+                                          rxn_base=rxn_base, 
+                                          rxn_temp=rxn_temp, 
+                                          groupr_iwt = card8_nuc.iwt,
+                                          groupr_card8 = card8_nuc.write_to_block()
                                           )
 
             # addition of strings
@@ -140,6 +259,8 @@ class njoy2gendf:
             # write to file!
             with open(f'{self.savedir}/NJOY_INPUTS/{nuclide}.inp','w') as f:
                 f.write(inp_file_lines)
+
+            print('\n\n', flush=True)
 
             pass
         pass
@@ -187,7 +308,8 @@ class njoy2gendf:
 
         pass
     
-    def get_T300_rxn(self, nuclide:str='U235'):
+    @staticmethod
+    def get_T300_rxn(endf_file, use_HEATR:bool=True):  
         '''
         Return a list of RXN objects for reactions for base temperature. 
     3       1       total / mfd mtd mtname
@@ -198,13 +320,12 @@ class njoy2gendf:
     6       51      inelastic /
     6       -90     inelastic /
 
-        :param self: Description
-        :param nuclide:str
-            Name of nuclide e.g. Am241
+        :param endf_file: Path to the ENDF file
+        :param use_HEATR: Whether to include HEATR reactions
         '''
 
         # check if nuclide exists in data file
-        endf_file = self.find_endf_file_for_nuclide(nuclide)
+
         assert(endf_file is not None)
 
         # total reaction is always present 
@@ -247,11 +368,13 @@ class njoy2gendf:
         if inelas is not None:
             rxn_list += inelas
 
-        rxn_list += [RXN(mfd=3, mt=301, mtname='heat')] # heating]
+        if use_HEATR:
+            rxn_list += [RXN(mfd=3, mt=301, mtname='heat')] # heating]
 
         return rxn_list
 
-    def get_Tother_rxn(self, nuclide):
+    @staticmethod
+    def get_Tother_rxn(endf_file):
         '''
         Return a list of RXN objects for reactions for non T=300K temperatures. Accoring to NJOY manual page 249: 
         
@@ -277,7 +400,6 @@ class njoy2gendf:
         '''
 
         # check if nuclide exists in data file
-        endf_file = self.find_endf_file_for_nuclide(nuclide)
         assert(endf_file is not None)
 
         # total reaction is always present 
@@ -297,37 +419,43 @@ class njoy2gendf:
                          RXN(mfd=3, mt=452, mtname='nubar'),
                          ]
 
-        # elastic
-        # check if elastic is in mf=6 or mf=4/5
-        rxn_list += [RXN(mfd=3, mt=2, mtname='elastic')]
+        # elastic - need MF=6 for scattering matrix at higher temperatures
+        rxn_list += [RXN(mfd=6, mt=2, mtname='elastic')]
 
         return rxn_list
 
-    def generate_RECONR(self, nuclide, mat, library):
-        reconr = default_RECONR.write_block(nuclide, mat, library)
+    def generate_RECONR(self,  **kwargs):
+        reconr = default_RECONR.write_block(**kwargs)
         return reconr
 
-    def generate_BROADR(self, mat:int=9543, temperatures:list[float]=[300.,    600.,    900.,    1200.,   1500.,   1800.,   2100.,   2400.,   2700.,   3000.]):
-        broadr = default_BROADR.write_block(mat, temperatures)
+    def generate_BROADR(self, **kwargs):
+        broadr = default_BROADR.write_block(**kwargs)
         return broadr
 
-    def generate_UNRESR(self, mat:int=9543, temperatures:list[float]=[300,600], sig0s:list[float]=[1e10, 10, 1]):
-        unresr = default_UNRESR.write_block(mat=mat, temperatures=temperatures, sig0s=sig0s)
+    def generate_UNRESR(self, **kwargs):
+        unresr = default_UNRESR.write_block(**kwargs)
         return unresr
+    
+    def generate_PURR(self, **kwargs):
+        purr = default_PURR.write_block(**kwargs)
+        return purr
 
-    def generate_HEATR(self, mat:int=95434):
-        heatr = default_HEATR.write_block(mat=mat)
+    def generate_HEATR(self,  **kwargs):
+        heatr = default_HEATR.write_block(**kwargs)
         return heatr
 
     def generate_GROUPR(self, **kwargs):
         groupr = default_GROUPR.write_block(**kwargs)
         return groupr
 
-    def run_njoy_inputs(self):
+    def run_njoy_inputs(self, save_pendf=False, nthreads=1):
         '''
         Docstring for run_njoy_inputs. Run self.write_njoy_gendf_inputs() first!
         
+        nthreads: number of threads to use in parallel NJOY runs.
+
         :param self: Description
+        :param save_pendf: Whether to save the PENDF files
         '''
 
         assert os.path.exists(f'{self.savedir}/NJOY_INPUTS')
@@ -349,38 +477,109 @@ class njoy2gendf:
         gendf_dir = f'{self.savedir}/GENDF'
         os.makedirs(gendf_dir, exist_ok=True)
 
+        # folder for PENDF output if save_pendf is True
+        if save_pendf:
+            pendf_dir = f'{self.savedir}/PENDF'
+            os.makedirs(pendf_dir, exist_ok=True)
+
+        # it might make sense to run NJOY in a temp folder to avoid any clashes with tapeXX files 
+        # perform paralel runs here
+        endf_files = []
         for inp in inp_files:
-            print(f'Running NJOY for {inp}', flush=True)
-
             nuclide = inp.split('/')[-1][0:-4]
-
             # copy over ENDF file as tape20
-            shutil.copy(self.find_endf_file_for_nuclide(nuclide), 'tape20')
-            # copy over .inp file as njoy inpuy
-            
-            # clear old output (NJOY will append otherwise)
-            if os.path.exists(f'{out_dir}/{nuclide}.out') == True:
-                os.remove(f'{out_dir}/{nuclide}.out')
+            endf_files.append(self.find_endf_file_for_nuclide(nuclide))
 
-            # run njoy
-            subprocess.run([f'{self.njoy_exec} -i {inp} -o {out_dir}/{nuclide}.out'], shell=True,)
+        inp_endf_pairs = list(zip(inp_files, endf_files))
 
-            # if successful, then several files will be created 
+        # Create argument tuples for each call
+        args_list = [(pair, save_pendf, self.savedir, out_dir, self.njoy_exec) for pair in inp_endf_pairs]
 
-            if os.path.exists('tape25'):
-                shutil.copyfile('tape25', f'{gendf_dir}/{nuclide}.gendf')
-            else:
-                shutil.copyfile('tape24', f'{gendf_dir}/{nuclide}.gendf')
-
-            # clean up 
-            os.remove('tape20')
-            os.remove('tape21')
-            os.remove('tape22')
-            os.remove('tape23')
-            os.remove('tape24')
-            if os.path.exists('tape25') : os.remove('tape25')
+        with Pool(processes=nthreads) as pool:
+            pool.starmap(self.run_single_njoy_input, args_list)
 
         self.check_njoy_runs()
+
+    @staticmethod
+    def run_single_njoy_input(inp_endf_pairs, save_pendf, base_savedir, outdir, njoy_exec='njoy21'):
+        '''
+        Docstring for run_single_njoy_input
+        :param inp_endf_pairs: tuple of (inp_file, endf_file)
+        :param save_pendf: Whether to save the PENDF files (tape 24)
+        :param outdir: Description
+        :param inp_file: Description
+        :param njoy_exec: Description
+        '''
+
+        inp_file = inp_endf_pairs[0]
+        
+        print(f'Running NJOY for {inp_file}', flush=True)
+
+        nuclide = inp_file.split('/')[-1][0:-4]
+
+        os.makedirs(f'tmp_{nuclide}',exist_ok=True)
+
+        # copy over ENDF file as tape20
+        shutil.copy(inp_endf_pairs[1], f'tmp_{nuclide}/tape20')
+        # copy over .inp file as njoy inpuy
+        
+        # clear old output (NJOY will append otherwise)
+        if os.path.exists(f'{outdir}/{nuclide}.out') == True:
+            os.remove(f'{outdir}/{nuclide}.out')
+
+        # run njoy
+        shutil.copy(inp_file, f'tmp_{nuclide}/njoy_input.inp')
+        os.chdir(f'tmp_{nuclide}')
+        # run njoy, suppress output
+        subprocess.run(
+            [
+                njoy_exec,
+                "-i", "njoy_input.inp",
+                "-o", f"../{outdir}/{nuclide}.out", 
+            ],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            #check=True, # disable check so that even if njoy fails we can still capture the output files
+        )
+        # if successful, then several files will be created all beginning with tapeXX
+        # copy the last tape with the largest integer to gendf folder   
+
+        # find largest tape number in tapeXX
+        tape_files = glob.glob('tape*')
+        # Extract numbers from filenames
+        numbers = []
+        for file in tape_files:
+            match = re.search(r'tape(\d+)', file)
+            if match:
+                numbers.append(int(match.group(1)))
+
+        # Find the largest number,this will be the final GENDF file
+        max_n = max(numbers)
+        shutil.copy(f'tape{max_n}', f'../{base_savedir}/GENDF/{nuclide}.gendf')
+
+        # the second last is the pendf file, save if save_pendf is True
+        if save_pendf:
+            if len(numbers) >= 2:
+                second_last_n = sorted(numbers)[-2]
+                shutil.copy(f'tape{second_last_n}', f'../{base_savedir}/PENDF/{nuclide}.pendf')
+            else:
+                print(f'WARNING: Only one tape file found for {nuclide}. Cannot save PENDF file.', flush=True)
+
+        # clean up 
+        tape_files = glob.glob('tape*')
+        for tape in tape_files:
+            if os.path.exists(tape):
+                os.remove(tape)
+
+        # card8 flux values (if present) (if ninwt is = -10 or -20)
+        flux_files =  glob.glob('calculated_flux.*')
+        os.makedirs(f'../{outdir}/NJOY_FLUXCALC', exist_ok=True)
+        for ff in flux_files:
+            if os.path.exists(ff):
+                shutil.copy(ff, f'../{outdir}/NJOY_FLUXCALC/{nuclide}.{ff}')
+
+        os.chdir('..')
+        shutil.rmtree(f'tmp_{nuclide}')
 
 
     def check_njoy_runs(self):
@@ -444,6 +643,7 @@ def parse_endf_mf_mt(filename):
     return mf_mt    
 
 def get_inelastic(endf_file) -> list['RXN', 'RXN'] | list['RXN', 'RXN', 'RXN']:
+
     '''
     Returns inelastic RXN objects, checking for MT numbers 51-91. 
     E.g. say an ENDF file has reaction number [51,52,...86, 91]
@@ -496,3 +696,5 @@ def get_inelastic(endf_file) -> list['RXN', 'RXN'] | list['RXN', 'RXN', 'RXN']:
     else:
 
         return [rxn_min, rxn_max]
+    
+

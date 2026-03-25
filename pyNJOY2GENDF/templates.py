@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 import numpy as np
+from pyNJOY2GENDF.ioreadwrite import read_endf_mt_mf
+from pyNJOY2GENDF.card8 import GROUPRCard8, WeightingFlux
 
 # abstract class for RECONR
 class RECONR(ABC):
@@ -10,10 +12,10 @@ class RECONR(ABC):
 # default for RECONR (based on KM)
 class default_RECONR(RECONR):
     @staticmethod
-    def write_block(nuclide='Am241', mat=9543, library='ENDF-B/VIII'):
+    def write_block(nendf=20, npend=21, nuclide='Am241', mat=9543, library='ENDF-B/VIII'):
         tmp =f'''-- 1 -- -- 2 -- -- 3 -- -- 4 -- -- 5 -- -- 6 -- -- 7 -- -- 8 -- -- 9 -- -- 0 --
 RECONR
-   20      21 / nendf   npend
+   {nendf}      {npend} / nendf   npend
    '{nuclide} {library}' / tlabel
    {str(mat)} / mat
    0.01 / err
@@ -31,14 +33,14 @@ class BROADR(ABC):
 # default for RECONR (based on KM)
 class default_BROADR(BROADR):
     @staticmethod
-    def write_block(mat, temperatures):
+    def write_block(nendf=20, nin=21, nout=22, mat=9543, temperatures=[300, 600]):
         ntemp = len(temperatures)
 
         temp_str = '    '.join([f'{i:.1f}' for i in temperatures])
 
         tmp = f'''-- 1 -- -- 2 -- -- 3 -- -- 4 -- -- 5 -- -- 6 -- -- 7 -- -- 8 -- -- 9 -- -- 0 --
 BROADR
-   20      21      22 / nendf nin nout
+   {nendf}      {nin}      {nout} / nendf nin nout
    {str(mat)}    {ntemp} / mat1 ntemp1
    0.01 / errthn
    {temp_str} / temp2
@@ -54,7 +56,7 @@ class UNRESR(ABC):
 
 class default_UNRESR(UNRESR):
     @staticmethod
-    def write_block(mat, temperatures, sig0s):
+    def write_block(nendf=20, nin=22, nout=23, mat=9543, temperatures=[300, 600], sig0s=[1.e10, 1.e5, 1.e4, 1000., 100., 10., 1.]):
         ntemp = len(temperatures)
         nsig0s = len(sig0s)
 
@@ -63,8 +65,34 @@ class default_UNRESR(UNRESR):
 
         tmp = f'''-- 1 -- -- 2 -- -- 3 -- -- 4 -- -- 5 -- -- 6 -- -- 7 -- -- 8 -- -- 9 -- -- 0 --
 UNRESR
-   20      22      23 / nendf nin nout
+   {nendf}      {nin}      {nout} / nendf nin nout
    {str(mat)}    {ntemp}  {nsig0s} / matd ntemp nsigz
+   {temp_str} / temp
+   {sig0s_str} / sigz
+   0 / end\n
+'''
+
+        return tmp
+
+# abstract class for PURR
+class PURR(ABC):
+    @abstractmethod
+    def write_block(self, temperatures, sig0s):
+        pass
+
+class default_PURR(PURR):
+    @staticmethod
+    def write_block(nendf=20, nin=22, nout=23, mat=9543, temperatures=[300, 600], sig0s=[1.e10, 1.e5, 1.e4, 1000., 100., 10., 1.], nbin=20, nladr=100):
+        ntemp = len(temperatures)
+        nsig0s = len(sig0s)
+
+        temp_str = '    '.join([f'{i:0.1f}' for i in temperatures])
+        sig0s_str = '    '.join([f'{i:.3e}' for i in sig0s])
+
+        tmp = f'''-- 1 -- -- 2 -- -- 3 -- -- 4 -- -- 5 -- -- 6 -- -- 7 -- -- 8 -- -- 9 -- -- 0 --
+PURR 
+   {nendf}      {nin}      {nout} / nendf nin nout
+   {str(mat)}    {ntemp}  {nsig0s} {nbin} {nladr}/ matd ntemp nsigz nbin nladr
    {temp_str} / temp
    {sig0s_str} / sigz
    0 / end\n
@@ -81,10 +109,10 @@ class HEATR(ABC):
 # I changed from KM's definition, since we dont actually need the fission kerma, we can just use the total kerma (mt=301)
 class default_HEATR(HEATR):
     @staticmethod
-    def write_block(mat):
+    def write_block(nendf=20, nin=23, nout=24, mat=9543):
         tmp = f'''-- 1 -- -- 2 -- -- 3 -- -- 4 -- -- 5 -- -- 6 -- -- 7 -- -- 8 -- -- 9 -- -- 0 --
 HEATR
-   20      23      24 / nendf nin nout
+   {nendf}      {nin}      {nout} / nendf nin nout
    {str(mat)}    0 / matd npk\n
 '''
         return tmp 
@@ -100,7 +128,21 @@ class GROUPR(ABC):
 
 class default_GROUPR(GROUPR):
     @staticmethod
-    def write_block(nuclide:str, mat:int, library:str, temperatures:list[float], sig0s:list[float], energybin_edges:list[float], rxn_base:list['RXN'], rxn_temp:list['RXN']):
+    def write_block(
+                    nendf:int, 
+                    npend:int,  
+                    ngout2:int,
+                    nuclide:str, 
+                    mat:int, 
+                    library:str, 
+                    temperatures:list[float], 
+                    sig0s:list[float], 
+                    energybin_edges:list[float], 
+                    rxn_base:list['RXN'], 
+                    rxn_temp:list['RXN'], 
+                    groupr_iwt:int, 
+                    groupr_card8:str, # actually processed block of text is generated in njoy2gendf.py, search for if isinstance(groupr_weighting_flux, WeightingFlux): groupr_card8 = groupr_weighting_flux.write_to_block()
+                    ):
         '''
 
         Example of output
@@ -157,6 +199,10 @@ class default_GROUPR(GROUPR):
 
         rxn_temp : list of ints 
             reaction MT numbers for other temperatures. Normally you do temperature dependence for a small subset of MTs 
+
+        groupr_flux_calc : bool
+            Whether to perform flux calculation for resolved resonance range. Will auto detect if resonance exist for the nuclide, see card 8a 
+            
         '''
         ntemp = len(temperatures)
         nsig0s = len(sig0s)
@@ -166,13 +212,14 @@ class default_GROUPR(GROUPR):
 
         header=f'''-- 1 -- -- 2 -- -- 3 -- -- 4 -- -- 5 -- -- 6 -- -- 7 -- -- 8 -- -- 9 -- -- 0 --
 GROUPR
-   20      24      0       25 / nendf npend ngout1 ngout2
-   {str(mat)}    1       0       8       8    {ntemp}       {nsig0s}     / matb ign igg iwt lord ntemp nsigz
+   {nendf}      {npend}      0       {ngout2} / nendf npend ngout1 ngout2
+   {str(mat)}    1       0       {groupr_iwt}       8    {ntemp}       {nsig0s}     / matb ign igg iwt lord ntemp nsigz
    '{nuclide} {library}' / tlabel
    {temp_str} / temp
    {sig0s_str} / sigz
    {ngn} / ngn
 '''
+
         group_edges_str = '   '
     
         for cge, ge in enumerate(energybin_edges):
@@ -183,20 +230,28 @@ GROUPR
                 group_edges_str += '\n   '
         group_edges_str += '/ egg\n'
 
+
+        # card8 goes here 
+        if groupr_card8 is None:
+            groupr_card8 = ''
+
         rxn_string = ''
         # reactions for base temperature 
         for rxn in rxn_base:
+            assert isinstance(rxn, RXN), 'rxn_base must be a list of RXN objects'
             rxn_string += '   ' + rxn.write_line() + '\n'
         rxn_string +='   0 /\n'
 
         # reactions for nonbase temperature
         for it in range(ntemp - 1):
             for rxn in rxn_temp:
+                assert isinstance(rxn, RXN), 'rxn_temp must be a list of RXN objects'
                 rxn_string += '   ' + rxn.write_line() + '\n'
             
             rxn_string +='   0 /\n'
 
-        return header + group_edges_str + rxn_string + '   0 / end\n'
+        return header + group_edges_str + groupr_card8 + rxn_string + '   0 / end\n'
+
 
 
 class RXN:
@@ -238,6 +293,9 @@ class RXN:
     
     def write_line(self):
         return f'{self.mfd}'.ljust(8) + f'{self.mt}'.ljust(8) + self.mtname + ' /'
+
+
+
 
 
 def mfd_describ():

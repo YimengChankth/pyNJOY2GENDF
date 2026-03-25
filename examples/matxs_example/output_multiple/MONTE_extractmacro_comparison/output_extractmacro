@@ -1,0 +1,62 @@
+ ------------------------------------------------ Processing GENDF file: ../../gendf_library/GENDF/Am2 2026-02-02 16:16:01 
+ BELOW IS A COPY OF THE INPUT FILE
+ ------------ Processing material: B10Am241_FUEL
+ === DEBUG: Starting sig0 iteration for material: B10Am241_FUEL
+     Number of isotopes:           2
+     Number densities:   4.4999999999999997E-003   2.0000000000000000E-002
+     Number of groups:           4
+     Initial interpolated total XS for each isotope/group:
+      Isotope 1
+        Group 1:  3.70058E+02
+        Group 2:  3.43600E+01
+        Group 3:  2.40039E+01
+        Group 4:  1.20353E+01
+      Isotope 2
+        Group 1:  1.27310E+03
+        Group 2:  1.41839E+02
+        Group 3:  2.69880E+01
+        Group 4:  5.07467E+00
+    Iteration 1, error =  5.65724E+03
+      Iso 1 sig0:  5.65824E+03 6.30396E+02 1.19947E+02 2.25541E+01
+      Iso 2 sig0:  8.32631E+01 7.73101E+00 5.40088E+00 2.70795E+00
+    Iteration 2, error =  4.01651E+02
+      Iso 1 sig0:  6.05989E+03 7.17029E+02 1.21349E+02 2.30900E+01
+      Iso 2 sig0:  1.38101E+02 2.41517E+01 6.44621E+00 2.82048E+00
+    Iteration 3, error =  4.82515E+01
+      Iso 1 sig0:  6.10585E+03 7.65281E+02 1.21497E+02 2.31119E+01
+      Iso 2 sig0:  1.38390E+02 2.44798E+01 6.44874E+00 2.82133E+00
+    Iteration 4, error =  5.71414E-01
+    Iteration 5, error =  2.86089E-01
+    Iteration 8, error =  1.86704E-05
+ === DEBUG: Final sig0 values after convergence ===
+    Isotope 1:
+      Group 1:  6.10605995E+03
+      Group 2:  7.66142988E+02
+      Group 3:  1.21496875E+02
+      Group 4:  2.31120309E+01
+    Isotope 2:
+      Group 1:  1.38422568E+02
+      Group 2:  2.46485150E+01
+   2026-02-02 16:16:02 
+ Elapsed wall time (s):  0.611999989    
+   total
+     flux
+     fiss
+     kerma
+     nu-fiss
+     chi
+     scatter
+     isolist
+ === DEBUG: Writing sig0 to CSV ===
+     Shape of mat%sig0:           2           4
+     Values in memory order:
+      mat%sig0(1,1) =  6.10605995E+03
+      mat%sig0(1,2) =  7.66142988E+02
+      mat%sig0(1,3) =  1.21496875E+02
+      mat%sig0(1,4) =  2.31120309E+01
+      mat%sig0(2,1) =  1.38422568E+02
+      mat%sig0(2,2) =  2.46485150E+01
+      mat%sig0(2,3) =  6.44900973E+00
+      mat%sig0(2,4) =  2.82136424E+00
+     sig0
+ completed material: B10Am241_FUEL
